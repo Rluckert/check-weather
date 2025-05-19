@@ -1,8 +1,17 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
 }
+
+val localProperties = Properties().apply {
+    load(rootProject.file("local.properties").inputStream())
+}
+
+val baseUrl = localProperties.getProperty("BASE_URL") ?: ""
+val apiKey = localProperties.getProperty("OPENWEATHER_API_KEY") ?: ""
 
 android {
     namespace = "com.example.weather_test"
@@ -21,8 +30,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "BASE_URL", "\"https://api.openweathermap.org/data/2.5/\"")
-        buildConfigField("String", "OPENWEATHER_API_KEY", "\"b4ead4f1abe2f04811615681fcd0e1f6\"")
+        buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
+        buildConfigField("String", "OPENWEATHER_API_KEY", "\"$apiKey\"")
     }
 
     buildTypes {

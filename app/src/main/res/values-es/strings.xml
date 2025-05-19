@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">weather_test</string>
+    <string name="btn_check_weather">Consultar clima</string>
+    <string name="input_hint">Escribe el nombre de una ciudad</string>
+    <string name="clear_search">Borrar búsquedas</string>
+</resources>
